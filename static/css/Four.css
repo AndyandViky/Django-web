@@ -1,0 +1,36 @@
+
+/*头部开始*/
+header{height:250px;border-bottom:1px solid #77ec7f}
+#seach-bar{width:722px;height:44px;position:absolute;top:145px;border:1px solid transparent}
+#seach-bar input[type='text']{outline: medium;width:620px;height:42px;border:3px solid #77ec7f;background:linear-gradient(270deg,rgba(218,231,178,.1),rgba(218,231,178,.5))}
+#seach-bar input[type='button']{cursor:pointer;border:1px solid #77ec7f;width:100px;height:48px;position:absolute;background-color:#77ec7f;color:#fff;font-size:1.5em;}
+#thisSeach-more{width:700px;height:20px;position:absolute;left:320px;top:190px;}
+#thisSeach-more>li{float:left;margin-left:20px;line-height:20px;font-size:14px;cursor: pointer;color:#999;}
+#thisSeach-more>li:hover{text-decoration:underline;color:#666;}
+/*end*/
+
+/*主题部分开始*/
+#middle{width:1208.75px;margin:0 auto;border:1px solid transparent;}
+.condition-sort{margin-top:10px;margin-left:75px;}
+.condition-sort>li{width:100px;height:35px;float:left;line-height:35px;text-align:center;border:1px solid #ccc;font-size:15px;color:#999;cursor:pointer;}
+.condition-sort>li:hover{box-shadow:3px 3px 3px #ccc}
+.bg{background-color:rgba(110,150,0,.1)}
+.SBox{margin-top:80px;}
+.scenicSport>li{width:255px;height:300px;border:1px solid #ccc;float:left;margin-left:105px;margin-bottom:30px}
+.imgBox{width:247px;height:150px;margin:3px auto;}
+.imgBox img{width:247px;height:150px;cursor:pointer;}
+.scenicSport>li:hover{box-shadow:6px 6px 6px #ccc,-2px -2px 2px #ccc}
+.scenicSport>li img:hover{opacity:0.6;transition:opacity .5s;}
+.img-decritionBox{width:247px;height:140px;margin:0 auto;position:relative;}
+.img-decritionBox>h4{margin-top:15px;margin-left:20px}
+.decrition{font-size:14px;text-indent:2em;margin-top:10px;overflow:hidden;height:80px}
+.decrition a:hover{color:red;}
+.price{font-size:14px;color:red;margin-left:20px;float:left;}
+.rank{position:absolute;right:15px;bottom:6px;color:#999;}
+.persons{position:absolute;top:0;right:5px;}
+.persons>p{display:inline-block;font-size:13px;}
+.persons>img{width:14px;height:14px;margin-right:6px;}
+.clear{clear:both;}
+.floatMenu{width:60px;height:60px;background-color:rgba(110,150,0,.1);position:fixed;right:40px;top:350px;cursor: pointer;box-shadow:2px 2px 3px #999;border-radius:3px}
+.floatMenu img{width:60px;height:60px}
+/*end*/

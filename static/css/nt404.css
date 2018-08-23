@@ -1,0 +1,39 @@
+
+.error-page
+{
+	width:720px;
+	height:300px;
+	margin: 100px auto;
+}
+.error-page p{
+	font-size: 50px;
+	color: white;
+	text-align: center;
+}
+.error-page h3{
+	color: red;
+	font-size: 30px;
+	text-align: center;
+}
+form{
+	margin-top: 20px;
+	margin-bottom:100px;
+}
+#txt{
+	outline: medium;
+	width:620px;
+	height:42px;
+	border:none;
+	border-bottom:1px solid rgba(110,150,0,.5);
+	background:linear-gradient(270deg,rgba(218,231,178,.1),rgba(218,231,178,.5))
+}
+#bt{
+	cursor:pointer;
+	border:1px solid rgba(110,150,0,.2);
+	width:100px;
+	height:43px;
+	position:absolute;
+	background-color:rgba(110,150,0,.3);
+	color:#fff;
+	font-size:1.5em;
+}

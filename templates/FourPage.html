@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+	{% load staticfiles %}
+
+	{% block title %}美丽乡村专题网站-乡村旅游{% endblock %}
+
+	{% block self_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Four.css' %}">{% endblock %}
+	
+	{% block self_js %}<script type="text/javascript" src="{% static 'js/FourPage.js' %}"></script>
+	{% endblock %}
+
+    {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+
+	{% block main %}
+	<!--主体开始-->
+	<div id="main">
+		<div id="seach-bar">
+			<form>
+				<input type="text" placeholder="夏季/秋季/冬季" id="t">
+				<input type="button" value="搜索"  id="b">
+			</form>
+		</div>
+		<script>
+			var width = $(window).width();
+			var sWidth = $('#seach-bar').width();
+			$('#seach-bar').css('left',(width-sWidth)/2);
+		</script>
+		<ul id="thisSeach-more">
+		</ul>
+		<div id="middle">
+			<ul class="condition-sort">
+				<li class="bg">综合排序</li>
+				<li>热度</li>
+				<li>门票价格</li>
+			</ul>
+			<div class="SBox">
+				<ul class="scenicSport">
+				</ul>
+			</div>
+		</div>	
+		<!--右边菜单-->
+		<div class="floatMenu">
+			<a href="{% url 'indexView' %}"><img src="{% static 'images/主页.png' %}" alt="" title="返回主页"></a>
+		</div>
+		<div class="clear"></div>
+	</div>	
+	<!--主体结束-->
+
+	{% endblock %}

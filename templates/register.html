@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="icon" href="{% static 'images/rfq.png' %}" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <script src="{% static 'js/jquery-1.7.2.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+    <script src="{% static 'js/register.js' %}"></script>
+    <title>最美乡村-注册</title>
+</head>
+<body>
+    <header id="head"><a href="{% url 'indexView' %}" class="return-first"><<返回主页</a></header>
+    <div class="login" style="top:-80px">
+        <form method="post" action="{% url 'RegisterView' %}">
+            <a href="" class="login-up">账号注册</a>
+            <lable for="username" class="a">用户名</lable>
+            <input type="text" name="username" placeholder="请输入用户名..." id="username">          
+            <lable for="email" class="a">邮箱：</lable>
+            <input type="text" name="email" placeholder="请输入邮箱..." id="email">
+            <lable for="password" class="a">输入密码：</lable>
+            <input type="password" name="password1" placeholder="请输入密码..." class="password">
+            <lable for="password" class="a">再次输入密码：</lable>
+            <input type="password" name="password2" placeholder="请输入密码..." class="password">
+            <div class="back-error-info">{% for key,errors in register_form.errors.items %}{{ errors }}{% endfor %}{{ error_info }}</div>
+            <script>
+                var error = $('.back-error-info').text();
+                if(error!=""){
+                    $('.back-error-info').css('display','block');
+                }
+            </script>
+            <input type="submit" value="注册">
+            <a href="{% url 'LoginView' %}" class="new-count">登录</a>
+            {% csrf_token %}
+        </form>
+    </div>
+    <div class="tip-info"></div>
+    <canvas id = "canvas">
+</body>
+</html>

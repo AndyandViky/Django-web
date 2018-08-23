@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+	{% load staticfiles %}
+
+	{% block title %}美丽乡村专题网站-详情页{% endblock %}
+
+	{% block self_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/detail.css' %}">{% endblock %}
+	
+	{% block self_js %}{% endblock %}
+
+    {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+
+	{% block main %}
+<div id="content" class="global_module">
+ 	<div class="pro_detail">
+ 		<div class="pro_detail_left">
+ 			<div class="jqzoom"><img src="/{{country_dec.image.url}}" id="bigim"></div>
+ 			<a href="/{{country_dec.image.url}}" target="_blank" id="imga"><img src="{% static 'images/look.gif' %}"></a>
+ 		</div>
+ 		<div class="pro_detail_right">
+ 			<h2>{{country_dec.name}}</h2>
+ 			<p style="text-indent:2em;line-height:30px">{{country_dec.detail}}</p>
+ 			<p><strong>价格：
+				 <span style="color:red">
+				 {% if country_dec.price %}
+				 {{country_dec.price}}.00</span>&nbsp;元<del style="margin-left:10px">原价：<span>{{country_dec.price}}+10</span>元</del> </strong></p>
+				 {% else %}
+				 0.00</span>&nbsp;元<del style="margin-left:10px">原价：<span>0</span>元</del> </strong></p>
+				 {% endif %}
+ 			<p><strong>类型：<span>{{country_dec.kinds_of}}</span></strong></p>
+ 			<p><strong>开放时间：
+				 {% if country_dec.open_time %}
+				 {{country_dec.open_time}}
+				 {% else %}
+				 全年
+				 {% endif %}
+			</strong></p>
+ 			<p><strong>地址：<span>{{country_dec.detailDress}}</span></strong></p>
+ 			<p><strong>电话：<span>{{country_dec.phone}}</span></strong></p>
+			 {% if country_dec.rank %}
+ 			<div class="pro_rating">景点等级: <span>{{country_dec.rank}}</span></div>
+			 {% endif %}
+			 <form action="{% url 'MapView' Ctype country_dec.id %}" method="post">
+				 <input type="hidden" name="adress" value="{{ country_dec.detailDress }}">
+				 <input type="submit" class="button" value="我想去">
+				 {% csrf_token %}
+			 </form>
+ 		</div>
+ 	</div>
+	<div class="rec_country">
+		<p class="rec_title">
+			{% if country_dec.kinds_of == "乡村风景" %}
+			推荐风景
+			{% elif country_dec.kinds_of == "美食" %}
+			推荐美食
+			{% elif country_dec.kinds_of == "乡村文化" %}
+			推荐文化
+			{% else %}
+			推荐景点
+			{% endif %}
+		</p>
+		<style>
+			.hide_country_info{width:313px;height:50px;background-color:rgba(0,0,0,.5);position:absolute;bottom:0;text-align:center;line-height:50px;color:#fff;display:none}
+		</style>
+		<ul class="rec_utem">
+			{% for rec in rec_country %}
+			<li class="rec_item">
+				<a href="/country/{{Ctype}}/{{rec.id}}"><img src="/{{rec.image}}" alt=""></a>
+				<div class="hide_country_info">{{rec.name}}</div>
+			</li>
+			{% endfor %}
+			<script>
+				var hide_c = $('.rec_item');
+				hide_c.hover(function(){
+					$('.hide_country_info').eq($(this).index()).slideDown(100);
+				},function(){
+					$('.hide_country_info').eq($(this).index()).slideUp(100);
+				})
+			</script>
+		</ul>
+	</div>
+ </div>
+	{% endblock %}
+<div class="pro_detail">

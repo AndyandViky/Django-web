@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="icon" href="{% static 'images/rfq.png' %}" type="image/x-icon">
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% block self_css %}
+    {% endblock %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/head.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    {% block self_js %}
+    {% endblock %}
+</head>
+<body style="background-image: url({% static 'images/bc.jpg' %});">
+	<!--头部开始-->
+	<header id="head">
+		<div id="navigation">
+			<ul class="utem">
+				<li><a href="{% url 'indexView' %}" class="firstA">首页</a></li>
+				<li><a href="{% url 'BtScinceView' %}">乡村美景</a></li>
+				<li><a href="{% url 'BtFoodsView' %}">乡村美食</a></li>
+				<li><a href="{% url 'BtTouristView' %}">乡村四季游</a></li>
+				<li><a href="{% url 'BtCulturalView' %}">乡土文化</a></li>
+				<li><a href="{% url 'BtCountryView' %}">最美乡村</a></li>
+			</ul>
+			<div class="user-info">
+                {% block user_info %}
+                {% endblock %}
+			</div>
+		</div>
+		<div class="bulletin">
+			<p class="news">最新公告：<a target="_blank" href=""></a></p>
+			<script>
+				function autoButtlut(){
+					var href = ['http://www.hxnews.com/news/fj/sm/201611/07/1100191.shtml','http://www.zznews.cn/news/system/2016/03/18/010928662.shtml','http://news.66163.com/2014-11-21/963310.shtml','http://www.hxnews.com/news/fj/sm/201611/07/1100191.shtml']
+					var arr = ['三明这10个村落美到心醉！你都去过了么?','三明142个村庄入选2016年美丽乡村建设工程名单!','三明市首批30个市级美丽乡村示范村公布!','三明这10个村落美到心醉！你都去过了么?']
+					var i=0;
+					setInterval(function(){
+						$('.news>a').attr('href',href[i]);
+						$('.news>a').text(arr[i]);
+						i=(i+1)%arr.length;
+					},2000)
+				}
+				autoButtlut();			
+			</script>
+		</div>
+	</header>
+	<!--头部结束-->
+    {% block main %}
+    {% endblock %}
+	<!--尾部开始-->
+  	<footer id="foot">
+        <div class="clear"></div>
+        <div class="foot-center">
+            <span class="apart-title">合作伙伴</span>
+            <ul class="foot-utiem">
+            </ul>
+            <script>
+                var $footU = $('.foot-utiem');
+                for(var i=1;i<=14;i++){
+                    $footU.append('<li><a href=""><img src="/static/images/partner/'+i+'.png" alt=""></a></li>');
+                }
+            </script>
+        </div>
+        <div class="last-foot">@如有问题请联系我：17805850721<a href="http://wwwonline.online"> Design-By-Andy</a></div>
+    </footer>
+	<!--尾部结束-->
+</body>
+</html>

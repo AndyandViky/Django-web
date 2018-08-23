@@ -1,0 +1,110 @@
+
+{% extends 'base.html' %}
+{% load staticfiles%}
+	{% block title %}美丽乡村专题网站首页{% endblock %}
+	{% block self_css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/First.css' %}">
+    {% endblock %}
+
+    {% block self_js %}
+	<script type="text/javascript" src="{% static 'js/FirstPage.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+    {% endblock %}
+    {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+	{% block main %}
+	<!--主体开始-->
+<div id="main">	
+	<div id="AreaBanner">
+		<div id="banner">
+			{% for banner in banners%}
+			<img src="/{{ banner.img }}">
+			{% endfor %}
+		</div>
+		<div class="tabs">
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+			<div class="tab"></div>
+		</div>
+	</div>
+	<div id="AreaNewsBulletin">
+		<div class="Area-search">
+			<form>
+				<input type="text" id="txt" placeholder="站内搜索">
+				<input type="button" id="bt" value="搜索">
+			</form></div><div class="Area-news">
+			<div class="newsTitle">新闻资讯</div>
+			<ul>
+				{% for news in preview_news %}
+				<li><a target="_blank" href="{{ news.href }}">{{ news.title }}</a></li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div id="previewCate">
+		<div class="cateTitle color1">——美食预览——</div>
+		{% for cats in preview_cat %}
+		<div class="Box">
+			<div class="box-img">
+				<a href="country/Foods/{{ cats.id }}"><img src="/{{ cats.image }}"></a>
+			</div>
+			<div class="box-decrition">
+				<div class="titleName">{{ cats.name }}</div>
+				<p>{{ cats.detail }}<a target="_blank" href="{{ cats.href }}">[详情]</a></p>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="clear"></div>
+	</div>
+		
+	<div id="culturalArea">
+		<div class="cateTitle color2">——迷人文化——</div>
+		{% for cultural in preview_cultural %}
+		<div class="Box">
+			<div class="box-img">
+				<a href="country/Culturals/{{ cultural.id }}"><img src="/{{ cultural.image }}"></div></a>
+				<div class="box-decrition"><div class="titleName">{{ cultural.name }}</div>
+				<p>{{ cultural.detail }}<a target="_blank" href="{{ cultural.href }}">[详情]</a></p>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="clear"></div>
+	</div>
+	
+	<div id="ScenicSport">	
+		<div class="cateTitle color3">——必去胜地——</div>
+		{% for tourist in preview_tourist %}
+		<div class="Box">
+			<div class="box-img">
+				<a href="country/Tourists/{{ tourist.id }}"><img src="/{{ tourist.image }}"></div></a>
+				<div class="box-decrition"><div class="titleName">{{ tourist.name }}</div>
+				<p>{{ tourist.detail }}<a target="_blank" href="{{ tourist.href }}">[详情]</a></p>
+			</div>
+		</div>
+		{% endfor %}
+		<div class="clear"></div>
+	</div>
+</div>
+	<!--主体结束-->
+	{% endblock %}

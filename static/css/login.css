@@ -1,0 +1,17 @@
+body{overflow-y:hidden}
+.return-first{font-size:1.5em;color:#666;text-shadow:2px 2px 1px #fff;position:absolute}
+.return-first:hover{color:#999}
+.login{border-radius:5px;display: none;width:330px;margin:180px 400px 200px 350px;border:1px solid #ccc;background-color:rgba(105,205,255,.2);box-shadow:2px 2px 2px #ccc,-2px -2px 2px #ccc; position:absolute}
+.login-up{font-size:2em;display:block;height:50px;line-height:50px;text-align: center;color:#fff;box-shadow: 1px 1px 1px #ccc;margin-bottom:10px;text-shadow:2px 2px 2px #fff}
+.fogot-pw{font-size:12px;float:right;text-decoration: underline;color:#ccc}
+.fogot-pw:hover{color:#b94e41;}
+.a{color:#ccc}
+.login input{display:block;width:95%;height:30px;margin:5px auto;}
+.login input[type='submit']{margin-top:40px;width:200px;height:40px;cursor:pointer;background-color:rgba(105,205,255,.2);font-size:1.6em;color:#fff;text-shadow:1px 1px 2px #fff;border:1px solid transparent;border-radius:2px}
+.new-count{margin-top:15px;display:block;text-align: center;margin-bottom:20px;color:#ccc}
+.new-count:hover{color:#b94e41;}
+.back-error-info{color:#fff;width:317.5px;height:50px;margin:10px auto;background-color:rgba(105,205,255,.3);color:aqua;text-align:center;line-height:50px;font-size:1.2em;display: none;overflow: hidden}
+.errorInfo{display:block;color:red;text-align:center}
+.succsed{display: block;text-align:center;color:aqua}
+.tip-info{opacity: 0;border-radius:5px;border:1px solid #ccc;width:230px;height:100px;position:absolute;top:30%;left:45%;background-color:#fff;text-align: center;line-height:100px;color:aqua}
+canvas{background:#000;}

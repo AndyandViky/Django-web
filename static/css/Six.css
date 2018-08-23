@@ -1,0 +1,27 @@
+
+
+
+/*主体开始*/
+#main{width:1100px;margin:0 auto;position: relative;}
+.Title{width:94%;height:60px;margin:20px auto;border-top:5px solid rgba(110,150,0,.1);border-bottom:5px solid rgba(110,150,0,.1);}
+.Title>h1{line-height:60px;padding-left:40px;color:rgb(120,120,120);}
+.bt-utem>li{width:94%;height:320px;margin:30px auto;position: relative;}
+.bt-utem>li:hover{box-shadow:5px 5px 6px rgba(110,150,0,.2),-2px -2px 6px rgba(110,150,0,.1);}
+
+.CountryBox{width:98%;height:300px;position:absolute;top:10px;left:10px;overflow: hidden}
+.CountryName{height:30px;color:rgb(120,120,120);margin-top:10px;}
+.imgBox{width:40%;height:80%;display:inline-block;border:5px solid rgba(200,200,200,.7);margin-top:10px;}
+.imgBox img{width:100%;height:100%;}
+.decrition{width:58%;height:65%;float:right;margin-top:80px;}
+.decrition>p{font-size:14px;text-indent:2em;}
+
+#page{height:30px;cursor: pointer;margin-left:800px;margin-bottom:50px}
+#page>li{width:40px;height:30px;float:left;background-color:rgba(110,150,0,.1);border-left:1px solid rgb(225,225,225);text-align:center;line-height:30px;border-radius:4px}
+#page>li:first-child{width:60px;}
+#page>li:last-child{width:60px;}
+#page>li:hover{box-shadow:3px 3px 2px rgba(110,150,0,.5)}
+.colorBg{color:brown}
+
+.floatMenu{width:60px;height:60px;background-color:rgba(110,150,0,.1);position:fixed;right:40px;top:350px;cursor: pointer;box-shadow:2px 2px 3px #999;border-radius:3px;}
+.floatMenu img{width:60px;height:60px}
+/*end*/

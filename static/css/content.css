@@ -1,0 +1,28 @@
+/*主体开始*/
+#main{width:1208.75px;position:relative;margin: 0 auto}
+#middle{width:1208.75px;margin:0 auto;border:1px solid transparent;}
+.item{margin-top:10px;margin-left:70px}
+.item>li{float:left;width:100px;height:35px;border:1px solid #ccc;text-align:center;line-height:35px;cursor: pointer;}
+.item>li:hover{box-shadow:3px 3px 3px rgba(110,150,0,.2)}
+.bg{background-color:rgba(110,150,0,.1);color:#666}
+.depart{width:100px;height:35px;border:1px solid #ccc;float:left;margin-left:30px;text-align:center;line-height:35px;cursor:pointer;color:#999;}
+.depart-point{width:20px;height:35px;background-color:rgba(110,150,0,.1);float:right;line-height:35px;}
+.depart>img{width:17px;height:17px;margin-right:2px;}
+.hide-area{position:absolute;width:200px;height:100px;background-color:#fff;display:none;box-shadow:2px 2px 3px #ccc;z-index:100}
+.hide-utem>li{width:40px;height:30px;font-size:14px;float:left;margin-top:2px;margin-left:8px;}
+.hide-utem>li:hover{color:#b92525;}
+
+.SBox{margin-top:80px;}
+.scenicSport>li{width:255px;height:300px;border:1px solid #ccc;float:left;margin-left:105px;margin-bottom:30px}
+.imgBox{width:247px;height:150px;margin:3px auto;}
+.imgBox img{width:247px;height:160px;cursor:pointer;}
+.scenicSport>li:hover{box-shadow:6px 6px 6px #ccc,-2px -2px 2px #ccc;transition:box-shadow .5s}
+.scenicSport>li img:hover{opacity:0.6;transition:opacity .5s;}
+.img-decritionBox{width:247px;height:140px;margin:0 auto;position:relative;}
+.img-decritionBox>h4{margin-top:20px;text-align: center;}
+.decrition{font-size:14px;text-indent:2em;margin-top:15px;overflow:hidden;height:100px;}
+.decrition a:hover{color:#b92525;}
+.clear{clear:both;}
+.floatMenu{width:60px;height:60px;background-color:rgba(110,150,0,.1);position:fixed;right:40px;top:350px;cursor: pointer;box-shadow:2px 2px 3px #999}
+.floatMenu img{width:60px;height:60px;}
+/*end*/

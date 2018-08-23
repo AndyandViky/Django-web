@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+	{% load staticfiles %}
+
+	{% block title %}美丽乡村专题网站-乡村文化{% endblock %}
+
+	{% block self_css %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/content.css' %}">
+	{% endblock %}
+	{% block self_js %}
+		<script type="text/javascript" src="{% static 'js/content.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/ThirdPage.js' %}"></script>
+	{% endblock %}
+    {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+
+	{% block main %}
+	<div id="main">
+		<div id="middle">
+			<ul class="item">
+				<li class="bg">查看全部</li>
+				<script>
+        			$(function(){
+						var li = $('.bg');
+						li.on('click',function(){
+							$('.txt').eq(0).text("位置");
+							$('.scenicSport>li').remove();
+							$.getJSON('{% url "ajax" "0" "cultural" %}',function(data){
+								createScenic(data);
+							});
+						})
+        			})
+    			</script>
+			</ul>
+			<div class="depart">	
+				<img src="{% static 'images/定位.png'%}" alt="">	
+				<span class="txt">位置</span>
+				<div class="depart-point">∧</div>
+				<div class="hide-area">
+					<ul class="hide-utem">
+					</ul>
+					<script>
+						$(function(){
+							var depart=$('.txt');
+							var city=$('.hide-utem>li');
+							city.on('click',function(){
+								depart.text($(this).text());
+								var cityName = $(this).text();
+								$('.scenicSport>li').remove();
+								var url = '/country/get_ajax/'+cityName+'/cultural';
+      							$.getJSON(url,function(data){
+									createScenic(data);
+								});
+							})
+						});
+    				</script>
+				</div>
+			</div>
+			<!--美食-->
+			<div class="SBox">
+				<ul class="scenicSport">
+					{% for cultural in culturals %}
+					<li>
+						<div class="imgBox">
+							<a href="{{ cultural.id }}"><img src="/{{ cultural.image }}" alt=""></a>
+						</div>
+						<div class="img-decritionBox">
+							<h4>{{ cultural.name }}</h4>
+							<p class="decrition">{{ cultural.detail }}<a href="{{ cultural.href }}">[详情]</a></p>
+						</div>
+					</li>	
+					{% endfor %}
+				</ul>
+			</div>
+			<!--右边菜单-->
+			<div class="floatMenu">
+				<a href="{% url 'indexView' %}"><img src="{% static 'images/主页.png' %}" alt="" title="返回主页"></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	{% endblock %}

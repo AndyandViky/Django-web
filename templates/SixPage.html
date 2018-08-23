@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+	{% load staticfiles %}
+
+	{% block title %}美丽乡村专题网站-最美乡村{% endblock %}
+
+	{% block self_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/Six.css' %}">{% endblock %}
+	
+	{% block self_js %}<script type="text/javascript" src="{% static 'js/SixPage.js' %}"></script>{% endblock %}
+
+  {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+
+	{% block main %}
+	<div id="main">
+
+		
+		<!--右边菜单-->
+		<div class="floatMenu">
+			<a href="{% url 'indexView' %}"><img src="{% static 'images/主页.png' %}" alt="" title="返回主页"></a>
+		</div>
+		<div class="clear"></div>
+	</div>
+	{% endblock %}
+

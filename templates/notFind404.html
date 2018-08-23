@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+	{% load staticfiles %}
+
+	{% block title %}404错误{% endblock %}
+
+	{% block self_css %}<link rel="stylesheet" type="text/css" href="{% static 'css/nt404.css' %}">{% endblock %}
+	
+	{% block self_js %}
+		<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+	{% endblock %}
+
+    {% block user_info %}
+	 	{% if request.user.is_authenticated %}
+		<a href="{% url 'PersonalView' %}" title="用户设置">
+            <img src="/{{ request.user.image }}" alt="">
+		</a>
+		<span class="user-name">
+			{% if request.user.nike_name %}
+                {{ request.user.nike_name }}
+            {% else %}
+                {{ request.user.email }}
+            {% endif %}
+		</span>
+		<a href="{% url 'LogoutView' %}" class="user-retire">安全退出</a>
+		{% else %}
+		<a href="{% url 'LoginView' %}" class="user">登录</a>
+		<a href="{% url 'RegisterView' %}" class="user">注册</a>
+		{% endif %}
+    {% endblock %}
+
+	{% block main %}
+	<div class="content">
+		<!--start-plans-404page-->
+		<div class="error-page">
+			<form>
+				<input type="text" id="txt" placeholder="站内搜索">
+				<input type="button" id="bt" value="搜索">
+			</form>
+			<p>Page Not Found!</p>
+			<h3>404</h3>
+		</div>
+		<!--End-plans-404page-->
+	</div>
+	{% endblock %}
